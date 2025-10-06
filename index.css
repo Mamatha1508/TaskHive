@@ -1,4 +1,15 @@
+*
+{
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 16px;
+}
+.main-div
+{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 
+}
 .form 
 {
      display: flex;
@@ -26,7 +37,10 @@ margin: 10px 0px 10px 0px;
 .header-container
 {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 40%;
+    margin: 50px;
+
 
 }
 .header-container img
@@ -38,33 +52,53 @@ margin: 10px 0px 10px 0px;
 {
     display: flex;
     justify-content:  space-around;
+    flex-direction: column;
     list-style-type: none;
-    width: 50vw;
 }
+   
 .header-container a
 {
     text-decoration: none;
+    margin-top: 20px;
+}
+.header-container li
+{
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header-container svg
+{
+   padding-right: 20px;
+}
+.dashboard
+{
+    width: 100%;
 }
 .dashboard-items
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin: 20px;
 
 }
-.dashboard-items div
+/* .dashboard-items div
 {
     height: 200px;
     width: 200px;
     border: 1px solid black;
     text-align: center;
+    margin: 10px;
+    border-radius: 10px;
 
-}
+} */
 .add-tasks-form
 {
     display: flex;
     flex-direction: column;
     width: 30vw;
-    margin: 0px 0px 20px 50px;
+    /* margin: 0px 0px 20px 50px; */
+    padding: 40px;
+    border-radius: 10px;
     
 }
 .task-list span
@@ -79,6 +113,24 @@ margin: 10px 0px 10px 0px;
     justify-content: space-between;
     margin-top: 20px;
 }
+.save-btn button:nth-of-type(1)
+{
+    height: 40px;
+    width: 120px;
+    background-color: #f9f58f;
+    color: black;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.save-btn button:nth-of-type(2)
+{
+    height: 40px;
+    width: 120px;
+    background-color: #209137;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+}
 .add-projects-form
 {
     display: flex;
@@ -86,4 +138,270 @@ margin: 10px 0px 10px 0px;
     width: 30vw;
     margin: 0px 0px 20px 50px;
     
+}
+
+.search-box
+{
+    width: 60%;
+    
+}
+.search-box input
+{
+        width: 90%;
+    border-radius: 20px;
+    height: 35px;
+    margin-top: 30px;
+    
+}
+.dashboard-overview
+{
+    border: 1px solid black;
+    margin: 20px 0px 20px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 60%;
+    
+
+}
+.dashboard-overview h1
+{
+    text-align: center;
+
+}
+.completed-tasks
+{
+    font-size: 30px;
+}
+.tasks-overview-container
+{
+    display: flex;
+    margin: 10px ;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 200px;
+    
+}
+.tasks-overview-container img
+{
+    height: 40px;
+    width: 40px;
+    margin: 30px 30px 0px 10px;
+}
+.tasks-count
+{
+    margin-top: 10px;
+}
+.tasks-count p
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+} 
+.pending-tasks
+{
+    font-size: 30px;
+}
+.add-tasks-form-container
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}   
+.add-tasks-form
+{
+    background: white;
+}
+.add-tasks-form label,select,input,textarea, button
+{
+   margin: 5px;
+   /* padding: 0px 20px 0px 20px; */
+
+  
+}
+.add-tasks-form label
+{
+    font-weight: 700;
+}
+.add-tasks-form input,select
+{
+    height: 30px;
+}
+.tasksAndProjects-Overview
+{
+    height: 70%;
+    border: 1px solid black;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.projects-overview
+{
+    height: 30%;
+    
+    margin: 50px;
+    border: 1px solid black;
+}
+.tasks-overview
+{
+    height: 50%;
+    
+    margin: 50px;
+    border: 1px solid black;
+}
+.projects-overview-header
+{
+    display: flex;
+    justify-content: space-between;
+}
+.tasks-overview-header
+{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.tasks-overview-header button
+{
+        background-color: #0ca12b;
+    color: white;
+   
+    border-radius: 10px;
+    border-color: currentColor;
+    font-weight: 700;
+    width: 25%;
+}
+.tasks-list
+{
+    
+    margin: 2px;
+    display: flex;
+    justify-content: space-between;
+}
+.task-config
+{
+    height: 10px;
+    width: 12px;
+}
+.overview-tasks
+{
+    height: 20px;
+    
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    
+    /* box-shadow: 0 0 15px rgba(0,0,0,0.2); */
+    border-bottom: 1px solid #F3F5F7;
+    border-left: 1px solid #F3F5F7;
+    border-right: 1px solid #F3F5F7;
+    line-height: 30px;
+    
+}
+.overview-tasks:hover
+{
+    background-color: #F3F5F7;
+}
+.overview-tasks:nth-of-type(1)
+{
+    border-top: 1px solid #F3F5F7;
+}
+.priority
+{
+    height: 20px;
+
+}
+.tasks-overview-list table
+{
+    width: 100%;
+}
+.tasks-menu-list td
+{
+        padding: 20px 20px 10px 0px;
+}
+.popupMenu__icon
+{
+    position: relative;
+}
+.popupMenu__icon div
+{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    /* border: 1px solid gray; */
+     box-shadow: 0 0 10px rgba(0,0,0,0.5); 
+    border-radius: 5px;
+}
+.popupMenu__icon ul
+{
+   list-style-type: none;
+   padding: 10px;
+   margin: 10px;
+}
+.popupMenu__icon ul li
+{
+   padding: 4px;
+}
+
+.projects-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+     background: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.projects-form form{
+    display: flex;
+    flex-direction: column;
+    
+    background: white;
+    padding:  50px;
+    border-radius: 5px;
+    width: 40%;
+}
+.projects-form form label,select,input,textarea, button
+{
+   margin: 5px;
+   /* padding: 0px 20px 0px 20px; */
+
+  
+}
+.projects-form form input select
+{
+    height: 40px;
+    width: 70%;
+}
+.projects-form form div
+{
+   display: flex;
+   justify-content: space-between;
+   margin-top: 20px;
+}
+.projects-form form div button
+{
+   height: 50px;
+   width: 80px;
+
+}
+.projects-form form div button:nth-of-type(1)
+{
+  background-color: rgb(228, 228, 34);
+  border-radius: 5px;
+
+   
+}
+.projects-form form div button:nth-of-type(2)
+{
+  background-color: rgb(49, 170, 49);
+  border-radius: 5px;
+  color: white;
+   
 }

@@ -7,7 +7,7 @@ const ManageProjects=()=>{
     
     return (
         <div>
-              <h2> Add New Project</h2>
+              {/* <h2> Add New Project</h2> */}
             <form className="add-projects-form" >
                 <label>Project Title</label>
                 <input type="text" />
