@@ -80,11 +80,11 @@ const Body = () => {
         
      </div>
 
-      <div>
-       {/* <button onClick={()=>handleTaskPopupVisibility(true)}>Add Task</button> */}
+      {/* <div>
+      
 
         <Link to="/projects"> <button>Add Project </button></Link>
-      </div>
+      </div> */}
 
     </div>
   )

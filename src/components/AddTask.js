@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
+
+
 const AddTask = ({ setShowTaskPopup }) => {
 
     // console.log('tasks first',tasks)
@@ -15,8 +17,11 @@ const AddTask = ({ setShowTaskPopup }) => {
     const { register, handleSubmit } = useForm();
     const onTaskSubmit = (data) => {
         console.log('data', data)
-        console.log('add tasks', tasks)
-        let newArr = [...tasks, data]
+        console.log('add tasks', tasks);
+        const generateId = () => `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+        const newTask= {...data, id: generateId()}
+        console.log('new task')
+        let newArr = [...tasks, newTask]
         localStorage.setItem('taskslist', JSON.stringify(newArr))
         setTasks(newArr);
         // setShowTaskPopup(false)

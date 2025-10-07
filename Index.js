@@ -9,6 +9,9 @@ import AddTask from "./src/components/AddTask";
 import ManageProjects from "./src/components/ManageProjects";
 import TaskManagement from "./src/components/TaskManagement";
 import ProjectsManagement from "./src/components/projectManagement/ProjectsManagement";
+import DeleteTask from "./src/components/ManageTasks/DeleteTask";
+import UpdateTask from "./src/components/ManageTasks/UpdateTask";
+import CopyTask from "./src/components/ManageTasks/CopyTask";
 
 const Index=()=>{
     return (
@@ -32,7 +35,24 @@ const appRouter= createBrowserRouter([
                 },
                 {
                     path: '/add-tasks',
-                    element : <TaskManagement/>
+                    element : <TaskManagement/>,
+                      children :  [
+                        {
+                             path : "update-task",
+                        element : <UpdateTask/>
+                        },
+                          {
+                             path : "copy-task",
+                        element : <CopyTask/>
+                        },
+                          {
+                             path : "delete-task/:taskId",
+                        element : <DeleteTask/>
+                        }
+                       
+                       
+                       
+                    ]
                 },
                 // {
                 //     path:"/analytics",
@@ -41,6 +61,7 @@ const appRouter= createBrowserRouter([
                 {
                     path : "/projects",
                     element: <ProjectsManagement/>
+                  
                 }
            ]
     }
