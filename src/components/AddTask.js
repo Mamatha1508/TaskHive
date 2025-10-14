@@ -3,42 +3,70 @@ import { useForm } from "react-hook-form";
 
 
 
-const AddTask = ({ setShowTaskPopup }) => {
+const AddTask = (props) => {
 
-    // console.log('tasks first',tasks)
+    
     const [saveTask, setSaveTask] = useState(false);
     let existingTasks = localStorage.getItem('taskslist') && JSON.parse(localStorage.getItem('taskslist'));
     console.log('existing taskss', existingTasks);
-    // existingTasks==null ? existingTasks=[] : existingTasks=existingTasks;
+  
     existingTasks = existingTasks || [];
     const [tasks, setTasks] = useState(existingTasks);
-    //console.log('existing task',existingTasks.length)
-
-    const { register, handleSubmit } = useForm();
+   
+    const { register, handleSubmit, setValue, reset } = useForm();
     const onTaskSubmit = (data) => {
-        console.log('data', data)
+
+        if(props.existingTask)
+        {
+        let newArr= tasks.map((t)=> t.id==props.existingTask.id ? {...data} : t)
+         localStorage.setItem('taskslist',JSON.stringify(newArr))
+          setTasks(newArr);
+        props.setShowTaskPopup(false);
+         props.onTaskAdded(newArr);
+
+        }
+        else
+        {
+             console.log('data', data)
         console.log('add tasks', tasks);
         const generateId = () => `${Date.now()}-${Math.floor(Math.random() * 10000)}`;
         const newTask= {...data, id: generateId()}
         console.log('new task')
         let newArr = [...tasks, newTask]
         localStorage.setItem('taskslist', JSON.stringify(newArr))
-        setTasks(newArr);
-        // setShowTaskPopup(false)
-        setShowTaskPopup(false)
+         setTasks(newArr);
+        props.setShowTaskPopup(false);
+         props.onTaskAdded(newArr);
+        }
+       
+       
 
 
     }
 
     const handleTaskCancel = () => {
-        setShowTaskPopup(false)
+        props.setShowTaskPopup(false)
     }
+
+
+     useEffect(() => {
+    if (props.existingTask) {
+      for (const [key, value] of Object.entries(props.existingTask)) {
+        setValue(key, value);
+      }
+    } else {
+      reset(); // clear form for Add mode
+    }
+  }, [props.existingTask, setValue, reset]);
+
+    console.log('props.existing task',props.existingTask)
     return (
 
         <div className="add-tasks-form-container">
-            {/* <h2> Add New Task</h2> */}
-            
+        
             <form className="add-tasks-form" onSubmit={handleSubmit(onTaskSubmit)}>
+                  {props.existingTask ?  <h2> Update Task</h2> : <h2>Add New Task</h2>}
+            
                 <label>Task Title</label>
                 <input type="text" {...register("title")} />
                 <label>Description</label>
@@ -63,21 +91,6 @@ const AddTask = ({ setShowTaskPopup }) => {
                 </div>
 
             </form>
-            {/* <div className="task-list">
-                {
-                    existingTasks && existingTasks.length>0 && existingTasks.map((task,index)=>{
-                        return (
-                            <div key={index}>
-                                <span>{task.title}</span>
-                               
-                                  <span>{task.date}</span>
-                                  <span>{task.priority}</span>
-                                  <span>{task.status}</span>
-                                </div>
-                        )
-                    })
-                }
-            </div> */}
         </div>
     )
 }

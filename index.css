@@ -405,3 +405,20 @@ margin: 10px 0px 10px 0px;
   color: white;
    
 }
+
+.popupMenu__icon_project 
+{
+  display: inline-block;
+
+}
+.popupMenu__icon_project div
+{
+  display: inline-block;
+  border: 1px solid black;
+
+}
+.popupMenu__icon_project li
+{
+  list-style-type: none;
+
+}

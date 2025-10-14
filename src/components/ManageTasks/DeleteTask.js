@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { useOutlet, useOutletContext, useParams } from "react-router";
+import {  useOutletContext, useParams } from "react-router";
 
 const DeleteTask=()=>{
     //const tasksList= localStorage.getItem('taskslist') && JSON.parse( localStorage.getItem('taskslist'));

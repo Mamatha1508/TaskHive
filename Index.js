@@ -13,64 +13,64 @@ import DeleteTask from "./src/components/ManageTasks/DeleteTask";
 import UpdateTask from "./src/components/ManageTasks/UpdateTask";
 import CopyTask from "./src/components/ManageTasks/CopyTask";
 
-const Index=()=>{
+const Index = () => {
     return (
         <div className="main-div">
-           {/* <Login/> */}
-           <Header/>
-           <Outlet/>
+            {/* <Login/> */}
+            <Header />
+            <Outlet />
         </div>
     )
 
 }
 
-const appRouter= createBrowserRouter([
+const appRouter = createBrowserRouter([
     {
-            path:'/',
-            element : <Index/>,
-            children :[
-                {
-                    path : '/',
-                    element : <Body/>
-                },
-                {
-                    path: '/add-tasks',
-                    element : <TaskManagement/>,
-                      children :  [
-                        {
-                             path : "update-task",
-                        element : <UpdateTask/>
-                        },
-                          {
-                             path : "copy-task",
-                        element : <CopyTask/>
-                        },
-                          {
-                             path : "delete-task/:taskId",
-                        element : <DeleteTask/>
-                        }
-                       
-                       
-                       
-                    ]
-                },
-                // {
-                //     path:"/analytics",
-                //     element : <Analytics/>
-                // },
-                {
-                    path : "/projects",
-                    element: <ProjectsManagement/>
-                  
-                }
-           ]
-    }
-    
+        path: '/',
+        element: <Index />,
+        children: [
+            {
+                path: '/',
+                element: <Body />
+            },
+            {
+                path: '/add-tasks',
+                element: <TaskManagement />,
+                children: [
+                    {
+                        path: "update-task",
+                        element: <UpdateTask />
+                    },
+                    {
+                        path: "copy-task/:taskId",
+                        element: <CopyTask />
+                    },
+                    {
+                        path: "delete-task/:taskId",
+                        element: <DeleteTask />
+                    }
 
-   
+
+
+                ]
+            },
+            // {
+            //     path:"/analytics",
+            //     element : <Analytics/>
+            // },
+            {
+                path: "/projects",
+                element: <ProjectsManagement />
+
+            }
+        ]
+    }
+
+
+
 
 ])
 
-const root= ReactDOM.createRoot(document.querySelector('[id="root"]'));
-root.render(<RouterProvider router={appRouter}/>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
 

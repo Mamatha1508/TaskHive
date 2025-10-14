@@ -3,24 +3,24 @@ import AddTask from "./components/AddTask";
 
 const TasksOverview=({tasksList})=>{
     const [showTaskPopup,setShowTaskPopup]= useState(false);
-     var tasks= tasksList && tasksList.length>0 && tasksList.filter((task)=> task.priority=="Low")
+   
     const [updatedTasks,setUpdatedTasks]=useState(()=>{
-        var tasks= localStorage.getItem('taskslist') && localStorage.getItem('taskslist').length>0 && JSON.parse(localStorage.getItem('taskslist'))
+        var tasks= localStorage.getItem('taskslist') && localStorage.getItem('taskslist').length>0 && JSON.parse(localStorage.getItem('taskslist'));
+        console.log('tasks',tasks)
         return tasks;
     });
-    console.log('updatec tasks',updatedTasks)
+
+
+   
     const handlePopupVisibility=()=>{
         setShowTaskPopup(true);
 
     }
 
+    const handleAddTask=(data)=>{
+        setUpdatedTasks(data);
+    }
 
-    useEffect(()=>{
-      var tasks= JSON.parse(localStorage.getItem('taskslist'));
-
-      setUpdatedTasks(tasks) 
-
-    },[showTaskPopup])
    
     return (
         <div>
@@ -42,7 +42,7 @@ const TasksOverview=({tasksList})=>{
                 
             </div>
             {
-                showTaskPopup && <AddTask setShowTaskPopup={setShowTaskPopup}/>
+                showTaskPopup && <AddTask setShowTaskPopup={setShowTaskPopup}  onTaskAdded={handleAddTask}/>
             }
             
         </div>

@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddTask from "./AddTask";
 import ProjectsOverview from "./projectManagement/ProjectsOverview";
 import TasksOverview from "../TasksOverview";
+import Shimmer from "./Shimmer";
 
 
 const Body = () => {
-  let tasks = localStorage.getItem('taskslist') && JSON.parse(localStorage.getItem('taskslist'));
+ // let tasks = localStorage.getItem('taskslist') && JSON.parse(localStorage.getItem('taskslist'));
+  const [tasks,setTasks]=useState([]);
 // console.log('task count',tasks.length>0)
 // const [ showTaskPopup, setShowTaskPopup]= useState(false);
   // const handleTaskPopupVisibility=()=>{
   //     setShowTaskPopup(true)
   // }
+
+  useEffect(()=>{
+  let tasks = localStorage.getItem('taskslist') && JSON.parse(localStorage.getItem('taskslist'));
+  setTasks(tasks)
+  },[])
 
   return (
     <div className="dashboard">
@@ -29,7 +36,7 @@ const Body = () => {
             </div>
             <div className="tasks-count">
               {
-              tasks &&   tasks.length > 0 && <label className="completed-tasks">{tasks.filter((task) => task.status == "Completed").length} </label>
+              tasks &&   tasks.length > 0 && <label className="completed-tasks">{tasks.filter((task) => task.status == "Completed").length} </label> 
 
               }
               <p>Completed Tasks</p>
@@ -64,10 +71,7 @@ const Body = () => {
           </div>
         </div>
       </div>
-       {/* {
-          showTaskPopup && <AddTask className="add-tasks-popup"  setShowTaskPopup={setShowTaskPopup}/>
-           } */}
-    
+      
      <div className="tasksAndProjects-Overview">
       
          <div className="projects-overview">
@@ -79,12 +83,6 @@ const Body = () => {
     
         
      </div>
-
-      {/* <div>
-      
-
-        <Link to="/projects"> <button>Add Project </button></Link>
-      </div> */}
 
     </div>
   )
